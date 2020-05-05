@@ -1,0 +1,50 @@
+Hi .I have a doubt in circular imports .This is the link where I have uploaded 3 files (main.js , lib1.js ,lib2.js) https://github.com/aadhar54/WebClarity
+
+(main.js)
+In line 1 of main.js , I am able to understand that it requires lib1 file so we go to lib1.js .
+
+(lib1.js)
+-hello gets printed
+-line 2 of lib1.js requires lib2.js so we go to lib2.js
+
+(lib2.js)
+-hi gets printed
+-line requires lib1 but acc to rule when one file is under process of require , {} is returned , thus lib1 ={} 
+-bi gets printed
+-{} jhum gets printed
+-{b:20 , lib1:{}} is returned to lib1.js
+
+(lib1.js)
+-at line 2 ,lib2 is assiged as {b:20 , lib1:{}}
+-bello gets printed
+-{a:10,{b:20 , lib1:{}}} is returned to main.js
+
+(main.js)
+-const lib1 gets value as {a:10,{b:20 , lib1:{}}}
+which is correct and this only gets printed 
+
+
+MY DOUBT IS WITH THE SECOND LINE OF main.js 
+as neither the control is going to lib2 as hi is not printed .
+I am unable to understand how in line 2 value of lib2 is stored as 
+{ b: 20, lib1: {} }
+Why does it not even print hi which is at the beginning of lib2.js as if control will go to the file to require it , it should print that .Please help me .THanks for patience .
+
+Total output of main.js is :
+hello
+hi
+bi
+{} jhum
+bello
+{ a: 10, lib2: { b: 20, lib1: {} } }
+{ b: 20, lib1: {} }
+
+
+
+
+
+
+
+
+
+
